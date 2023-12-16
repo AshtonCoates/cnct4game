@@ -8,7 +8,7 @@ description = "A connect 4 game in the command line"
 readme = "README.md"
 homepage = "https://github.com/AshtonCoates/cnct4game"
 repository = "https://github.com/AshtonCoates/cnct4game"
-keywords = ["cli", "connect four", "game"]
+keywords = ["cli", "connect-four", "game"]
 categories = ["command-line-utilities"]
 
 
