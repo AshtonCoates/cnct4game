@@ -2,7 +2,14 @@
 name = "cnct4game"
 version = "0.1.0"
 edition = "2021"
+authors = ["Ashton Coates <a.coates.8537@gmail.com>"]
+license = "MIT"
+description = "A connect 4 game in the command line"
+readme = "README.md"
+homepage = "https://github.com/AshtonCoates/cnct4game"
+repository = "https://github.com/AshtonCoates/cnct4game"
+keywords = ["cli", "connect four", "game"]
+categories = ["command-line-utilities"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
