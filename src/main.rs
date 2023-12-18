@@ -11,17 +11,24 @@ fn main() {
         show_board(board);
 
         // take turn
-        let pos = get_user_input();
-        board = place_marker(board, pos-1, current_player);
+        board = loop {
+            let pos:usize = get_user_input(current_player);
+            let temp_board = place_marker(board, pos-1, current_player);
+            if temp_board == board { println!("That column is full! Please enter a valid column number"); } else { break temp_board; }
+        };
 
         if check_win(board, current_player) { break current_player; }
         if check_stalemate(board) { break 0; }
 
         // set other player
-        if current_player == 1 {current_player = 2;} else {current_player = 1;}
+        if current_player == 1 { current_player = 2; } else { current_player = 1; }
 
     };
-    println!("The winner is {}!", winner);
+    if winner == 0 {
+        println!("Stalemate!");
+    } else {
+        println!("The winner is {}!", winner);
+    }
 }
 
 // function to show the board
@@ -47,9 +54,9 @@ fn place_marker(mut board: [[i32; BOARD_LENGTH]; BOARD_HEIGHT], pos:usize, playe
     board
 }
 
-fn get_user_input() -> usize {
+fn get_user_input(player:i32) -> usize {
     loop {
-        println!("Choose a column to play in!");
+        println!("Player {}, choose a column to play in!", player);
         let mut input = String::new();
         io::stdin().read_line(&mut input).expect("Failed to read line");
         match input.trim().parse() {
@@ -72,7 +79,7 @@ fn check_stalemate(board:[[i32; BOARD_LENGTH]; BOARD_HEIGHT]) -> bool {
 }
 
 fn check_win(board:[[i32; BOARD_LENGTH]; BOARD_HEIGHT], player:i32) -> bool {
-    
+
     // iterate through cells, at each one check if it matches the desired player and if so, look around it for solutions
 
     let min_row: usize = if BOARD_HEIGHT >= 4 { BOARD_HEIGHT - 4 } else { 0 }; // the last row we should search for vertical/diagonal solutions
