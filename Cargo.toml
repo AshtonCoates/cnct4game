@@ -13,3 +13,4 @@ categories = ["command-line-utilities"]
 
 
 [dependencies]
+clap = { version = "4.4.11", features = ["derive"] }

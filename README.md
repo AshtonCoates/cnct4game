@@ -21,7 +21,15 @@ Then, a number 1-7 can be chosen, corresponding to the column to play in, and th
 
 When a sequence of 4 is detected, a winning message will be displayed and the script will end. Or, if there are no zeros detected in the board, a stalemate message will be displayed and the script will end.
 
+The size of the board can be changed using the `-c` and `-r` arguments, for example 
+```bash
+cnct4game -r 8 -c 10
+```
+
+
+
 ## Future Features
 
-* Add optional arguments that can change the size of the board
+* Add optional arguments that can change the size of the board (done!)
+* Fix bugs when making board less than 4 rows or columns
 * Add an AI to play against optionally
