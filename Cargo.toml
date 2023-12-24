@@ -1,6 +1,6 @@
 [package]
 name = "cnct4game"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Ashton Coates <a.coates.8537@gmail.com>"]
 license = "MIT"
@@ -14,3 +14,5 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.4.11", features = ["derive"] }
+crossterm = "0.27.0"
+#cpython = "0.7.1"

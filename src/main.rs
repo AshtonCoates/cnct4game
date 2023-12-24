@@ -3,7 +3,7 @@ use clap::Parser;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
-struct Arguments{
+struct Arguments {
     /// Number of rows in the board
     #[arg(short, long, default_value_t = 6)]
     rows: usize,
@@ -11,14 +11,38 @@ struct Arguments{
     /// Number of columns in the board
     #[arg(short, long, default_value_t = 7)]
     cols: usize,
+
+
+    /* 
+    /// Choice of player 1, either Human or Bot
+    #[arg(short, long, default_value_t = Player::Human)]
+    p1: Player,
+
+    /// Choice of player 2, either Human or Bot
+    #[arg(short, long, default_value_t = Player::Human)]
+    p2: Player,
+    */
 }
+
+#[derive(Debug)]
+enum Player {
+    Human,
+    Bot,
+}
+
 
 fn main() {
 
+    // get board size args
     let args = Arguments::parse();
 
     let board_height: usize = args.rows;
     let board_length: usize = args.cols;
+
+    if board_height < 4 || board_length < 4 {
+        println!("Board height and length must be at least 4! Please try again.");
+        return;
+    }
 
     let mut board = vec![vec![0;board_length];board_height];
     let mut current_player = 1;
@@ -29,8 +53,8 @@ fn main() {
         // take turn
         board = loop {
             let pos:usize = get_user_input(current_player, board_length);
-            let board_clone = board.clone();
-            let temp_board = place_marker(board_clone, pos-1, current_player);
+            let board_clone = board.clone();                                        // take turn on a copy of the board and
+            let temp_board = place_marker(board_clone, pos-1, current_player); // if they were equal, the col was full
             if temp_board == board { println!("That column is full! Please enter a valid column number"); } else { break temp_board; }
         };
 
@@ -99,9 +123,9 @@ fn check_win(board: &Vec<Vec<i32>>, player:i32, board_length:usize, board_height
 
     // iterate through cells, at each one check if it matches the desired player and if so, look around it for solutions
 
-    let min_row: usize = if board_height >= 4 { board_height - 4 } else { 0 }; // the last row we should search for vertical/diagonal solutions
-    let min_col: usize = if board_length >= 4 { 3 } else { 0 }; // the first column to be checked for down-left diagonal solutions
-    let max_col: usize = if board_length >= 4 { board_length - 4 } else { 0 }; // the last column we should search for horizontal/down-right diagonal solutions
+    let min_row: usize = board_height - 4; // the last row we should search for vertical/diagonal solutions
+    let min_col: usize = 3; // the first column to be checked for down-left diagonal solutions
+    let max_col: usize = board_length; // the last column we should search for horizontal/down-right diagonal solutions
 
     for (row_num, row) in board.iter().enumerate() {
         for (col_num, cell) in row.iter().enumerate() {
