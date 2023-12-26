@@ -4,7 +4,7 @@ Hello! This is a small project I am using to learn rust and experiment with buil
 
 As of now, the game can be played locally against another player.
 
-The board size is 6 rows and 7 columns by default, which when `target/release/cnct4game` is run will be printed to the terminal as an array of zeros
+The board size is 6 rows and 7 columns by default, which when `cargo build --release` and `target/release/cnct4game` is run will be printed to the terminal as an array of zeros
 
 ```
 0000000
