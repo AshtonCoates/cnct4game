@@ -1,6 +1,6 @@
 [package]
 name = "cnct4game"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 authors = ["Ashton Coates <a.coates.8537@gmail.com>"]
 license = "MIT"

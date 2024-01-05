@@ -33,4 +33,4 @@ Currently, the board must be at least 4 rows and 4 columns, or an error message 
 * Add optional arguments that can change the size of the board (done!)
 * Fix bugs when making board less than 4 rows or columns (temporarily fixed by not allowing those board sizes)
 * Add an AI to play against optionally
-* Better formatting/UX by clearing terminal rather than just printing
+* Better formatting/UX by clearing terminal rather than just printing (done!)

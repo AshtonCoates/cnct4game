@@ -1,6 +1,7 @@
 import time
+import ctypes
 
-def take_turn(board:list[list[int]], ):
+def take_turn(board:list[list[int]], player:int):
     return
 
 def simulate_move(board:list[list[int]], col:int, player:int):
